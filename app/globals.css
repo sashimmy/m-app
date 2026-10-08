@@ -1,26 +1,82 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* M-PACK brand tokens */
+  --teal: #3F95A0;
+  --teal-dark: #2B6F78;
+  --teal-50: #EAF4F6;
+  --peach: #EDA970;
+  --peach-50: #FBEEDF;
+  --coral: #D24B33;
+  --coral-50: #FBE4DF;
+  --navy: #2B5A7E;
+  --navy-50: #E5EDF3;
+  --cream: #FFF8EE;
+  --white: #FFFFFF;
+  --ink: #1F2D33;
+  --ink-soft: #4A5B64;
+  --ink-mute: #7B8990;
+  --line: #E8DFCF;
+
+  --background: var(--cream);
+  --foreground: var(--ink);
+  --radius: 1rem;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-teal: var(--teal);
+  --color-teal-dark: var(--teal-dark);
+  --color-teal-50: var(--teal-50);
+  --color-peach: var(--peach);
+  --color-peach-50: var(--peach-50);
+  --color-coral: var(--coral);
+  --color-coral-50: var(--coral-50);
+  --color-navy: var(--navy);
+  --color-navy-50: var(--navy-50);
+  --color-cream: var(--cream);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-mute: var(--ink-mute);
+  --color-line: var(--line);
+  --font-sans: var(--font-nunito), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-quicksand), ui-sans-serif, system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html, body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-nunito), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-quicksand), ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: -0.01em;
 }
+
+/* Focus ring */
+*:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+
+/* Print styles for group reports */
+@media print {
+  .no-print { display: none !important; }
+  body { background: white; color: black; }
+  .print-page { page-break-after: always; }
+  .card { box-shadow: none !important; border: 1px solid #ccc !important; }
+}
+
+/* Scrollbar polish */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb { background: #d9ccb3; border-radius: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
